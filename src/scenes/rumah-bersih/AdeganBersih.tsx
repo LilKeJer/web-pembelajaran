@@ -399,7 +399,7 @@ function Tangan({ kiri, gosok }: { kiri: boolean; gosok: number }) {
     const geser = d < 0.4 ? Math.sin(d * 30) * 0.06 * (kiri ? 1 : -1) : 0;
     g.current.position.x = (kiri ? -0.3 : 0.3) + geser;
   });
-  const kulit = "#f2c49b";
+  const kulit = "#f7b98b";
   return (
     <group ref={g} position={[kiri ? -0.3 : 0.3, 0, 0]} rotation={[0.3, 0, kiri ? -0.35 : 0.35]}>
       <mesh scale={[1, 1.15, 0.45]}>
@@ -451,7 +451,7 @@ function CuciTangan(p: PropsAdeganBersih & { gerak: boolean }) {
   return (
     <group>
       {/* Sabun di tepi wastafel */}
-      <group position={[POS_WASTAFEL[0] + 0.62, 1.22, POS_WASTAFEL[2] + 0.35]}>
+      <group position={[POS_WASTAFEL[0] + 0.66, 1.22, POS_WASTAFEL[2] + 0.4]}>
         <mesh ref={sabun}>
           <boxGeometry args={[0.3, 0.14, 0.2]} />
           <meshStandardMaterial color="#ff9ec4" />
@@ -487,8 +487,9 @@ function CuciTangan(p: PropsAdeganBersih & { gerak: boolean }) {
         <mesh
           position={[0, 0.1, 0.25]}
           onClick={(e) => {
+            if (!bisaGosok) return; // biarkan ketukan tembus ke sabun
             e.stopPropagation();
-            if (bisaGosok) p.onGosok();
+            p.onGosok();
           }}
           onPointerDown={(e) => {
             geser.current = { x: e.nativeEvent.clientX, jarak: 0, tekan: true };
@@ -510,7 +511,7 @@ function CuciTangan(p: PropsAdeganBersih & { gerak: boolean }) {
             }
           }}
         >
-          <boxGeometry args={[1.5, 1.1, 0.4]} />
+          <boxGeometry args={[1.15, 1.1, 0.4]} />
           <meshBasicMaterial visible={false} />
         </mesh>
       </group>

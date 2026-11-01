@@ -16,12 +16,15 @@ const tabTerlihat = () => document.visibilityState !== "hidden";
  */
 export function Panggung({
   kamera,
+  kameraAwal,
   lihat,
   latar = "#bfe9ff",
   gerakDikurangi = false,
   children,
 }: {
   kamera: Vec3;
+  /** Posisi kamera saat pertama muncul (lalu bergerak halus ke `kamera`). */
+  kameraAwal?: Vec3;
   lihat: Vec3;
   latar?: string;
   gerakDikurangi?: boolean;
@@ -33,7 +36,7 @@ export function Panggung({
     <Canvas
       dpr={[1, 1.5]}
       frameloop={terlihat ? "always" : "never"}
-      camera={{ position: kamera, fov: 45, near: 0.1, far: 200 }}
+      camera={{ position: kameraAwal ?? kamera, fov: 45, near: 0.1, far: 200 }}
       gl={{ antialias: true, powerPreference: "low-power", alpha: false }}
       style={{ touchAction: "none" }}
     >

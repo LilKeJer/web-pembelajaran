@@ -26,6 +26,7 @@ export function PembukaTopik({
     <main className={`relative flex h-dvh w-full flex-col items-center justify-center gap-6 overflow-hidden p-4 ${latar}`}>
       <Link
         href="/"
+        prefetch={false}
         aria-label={teksUi.kembali}
         title={teksUi.kembali}
         className="tekan absolute top-3 left-3 flex h-16 w-16 items-center justify-center rounded-full bg-white text-3xl"

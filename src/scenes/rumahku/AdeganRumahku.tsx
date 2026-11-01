@@ -378,16 +378,14 @@ function RumahRuangan(p: PropsAdeganRumahku) {
         <boxGeometry args={[lebarTotal + 0.4, 0.3, DALAM_RUANG + 0.4]} />
         <meshStandardMaterial color="#c99a6b" />
       </mesh>
-      <Prisma
-        panjang={lebarTotal + 0.8}
-        lebar={DALAM_RUANG + 0.8}
-        tinggi={1.6}
-        warna="#e8553e"
-        position={[0, yPusatPrisma(0.3 + TINGGI_RUANG + 0.15, DALAM_RUANG + 0.8, 1.6) , -0.6]}
-      />
-      <mesh position={[0, 0.3 + TINGGI_RUANG + 0.07, -0.6]}>
-        <boxGeometry args={[lebarTotal + 0.4, 0.15, DALAM_RUANG - 0.8]} />
-        <meshStandardMaterial color="#f4ead5" />
+      {/* Atap segitiga di belakang (rumah tampak potongan, atap tidak menutupi ruangan) */}
+      <mesh
+        position={[0, 0.3 + TINGGI_RUANG + 0.5 * 1.47, -DALAM_RUANG / 2 - 0.05]}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={[(lebarTotal + 0.8) / (Math.sqrt(3) * 1.47), 1, 1]}
+      >
+        <cylinderGeometry args={[1.47, 1.47, 0.3, 3]} />
+        <meshStandardMaterial color="#e8553e" flatShading />
       </mesh>
 
       <Interaktif {...umum("kamarTidur")} position={[X_RUANGAN.kamarTidur, 0, 0]} area={[3, 3, 4]} posisiArea={[0, 1.8, 0]}>

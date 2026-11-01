@@ -25,10 +25,6 @@ export default function Beranda() {
   const mulai = ditekan || izinSebelumnya;
 
   useEffect(() => {
-    daftarTopik.forEach((t) => router.prefetch(t.rute));
-  }, [router]);
-
-  useEffect(() => {
     if (mulai && semuaSelesai) void tembakKonfeti();
   }, [mulai, semuaSelesai]);
 

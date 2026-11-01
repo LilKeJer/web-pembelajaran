@@ -25,7 +25,10 @@ export function KameraHalus({ posisi, lihat, instan = false }: { posisi: Vec3; l
     const faktor = rasio < RASIO_ACUAN ? Math.min(2.2, Math.pow(RASIO_ACUAN / rasio, 0.8)) : 1;
 
     tujuanLihat.current.set(...lihat);
-    tujuan.current.set(...posisi).sub(tujuanLihat.current).multiplyScalar(faktor).add(tujuanLihat.current);
+    tujuan.current.set(...posisi).sub(tujuanLihat.current).multiplyScalar(faktor);
+    // Layar sempit: kamera sedikit lebih tinggi supaya adegan mengisi tinggi layar.
+    if (faktor > 1) tujuan.current.y += (faktor - 1) * tujuan.current.length() * 0.22;
+    tujuan.current.add(tujuanLihat.current);
 
     if (instan) {
       camera.position.copy(tujuan.current);

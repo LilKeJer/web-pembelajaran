@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { LayarBintang } from "@/components/LayarBintang";
 import { LayoutGame, type Narasi } from "@/components/LayoutGame";
 import { PembukaTopik } from "@/components/PembukaTopik";
@@ -42,6 +42,10 @@ export function Rumahku() {
   const pakai3D = usePakai3D();
   const [tahap, setTahap] = useState<Tahap>("pembuka");
   const [layar, setLayar] = useState<null | "adegan" | "akhir">(null);
+  // Kamera zoom ke ruangan yang disentuh, lalu kembali ke tampilan utuh.
+  const [fokus, setFokus] = useState<IdRuangan | null>(null);
+  const timerFokus = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => void (timerFokus.current && clearTimeout(timerFokus.current)), []);
 
   // ----- Adegan 2: bagian rumah -----
   const narasiBagian = useCallback((id: string) => {
@@ -159,11 +163,18 @@ export function Rumahku() {
     sorot: jt?.sorot ?? null,
     petunjuk: jt?.petunjuk ?? [],
     goyang: jt?.goyang ?? null,
-    fokus: tahap === 3 && jt3.state.fase === "jelajahi" ? ((jt3.state.dipilih as IdRuangan | null) ?? null) : null,
+    fokus: tahap === 3 && jt3.state.fase === "jelajahi" ? fokus : null,
     pintuTerbuka: jt2.sorot === "pintu" && tahap === 2,
     aktif: layar === null,
     gerakDikurangi,
-    onPilih: (id: IdBagianRumah | IdRuangan) => jt?.pilih(id),
+    onPilih: (id: IdBagianRumah | IdRuangan) => {
+      if (tahap === 3 && jt3.state.fase === "jelajahi") {
+        setFokus(id as IdRuangan);
+        if (timerFokus.current) clearTimeout(timerFokus.current);
+        timerFokus.current = setTimeout(() => setFokus(null), 3500);
+      }
+      jt?.pilih(id);
+    },
   };
 
   return (

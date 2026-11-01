@@ -39,6 +39,7 @@ export function LayarBintang({
         {akhirTopik ? (
           <Link
             href="/"
+        prefetch={false}
             className="tekan flex min-h-16 items-center gap-3 rounded-3xl bg-hijau px-8 py-3 text-2xl font-bold text-white sm:text-3xl"
           >
             <span aria-hidden>🏠</span> {teksUi.kembali}

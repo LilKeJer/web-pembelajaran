@@ -41,6 +41,7 @@ export function LayoutGame({
       <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-2 p-3">
         <Link
           href="/"
+          prefetch={false}
           aria-label={teksUi.kembali}
           title={teksUi.kembali}
           className="tekan pointer-events-auto flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-3xl"
