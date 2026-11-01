@@ -50,11 +50,11 @@ export const rumahku = {
     judul: "Rumahku Tempat Tinggalku",
     rute: "/rumahku",
     jumlahBintang: 3,
-  } satisfies InfoTopik,
+  } as InfoTopik,
   apaItuRumah: {
     judul: "Apa itu rumah?",
     teks: "Rumah adalah tempat berteduh kita semua agar tidak kepanasan dari matahari dan tidak basah saat hujan turun.",
-  } satisfies Paragraf,
+  } as Paragraf,
   bagianRumah: {
     judul: "Yuk, Kenali Bagian Rumah Kita:",
     items: [
@@ -64,7 +64,7 @@ export const rumahku = {
       { id: "pintu", nama: "Pintu", definisi: "Tempat kita masuk dan keluar rumah." },
       { id: "jendela", nama: "Jendela", definisi: "Tempat kaca untuk melihat pemandangan luar." },
     ],
-  } satisfies Daftar<IdBagianRumah>,
+  } as Daftar<IdBagianRumah>,
   ruangan: {
     judul: "Ada Ruangan Apa Saja di Dalam Rumah?",
     items: [
@@ -72,7 +72,7 @@ export const rumahku = {
       { id: "dapur", nama: "Dapur", definisi: "Tempat Ibu atau Ayah memasak makanan lezat." },
       { id: "kamarMandi", nama: "Kamar Mandi", definisi: "Tempat kita membersihkan badan agar wangi." },
     ],
-  } satisfies Daftar<IdRuangan>,
+  } as Daftar<IdRuangan>,
 };
 
 // ---------- Topik 2 ----------
@@ -86,11 +86,11 @@ export const rumahBersih = {
     judul: "Rumahku Bersih dan Sehat",
     rute: "/rumah-bersih",
     jumlahBintang: 3,
-  } satisfies InfoTopik,
+  } as InfoTopik,
   kenapaBersih: {
     judul: "Kenapa Rumah Harus Bersih?",
     teks: "Rumah yang bersih membuat badan kita sehat, kuat, dan terhindar dari kuman penyakit yang nakal.",
-  } satisfies Paragraf,
+  } as Paragraf,
   kebiasaan: {
     judul: "Kebiasaan Baik yang Bisa Aku Lakukan:",
     items: [
@@ -111,7 +111,7 @@ export const rumahBersih = {
         definisi: "Membiasakan cuci tangan memakai sabun sebelum makan dan setelah memegang benda kotor.",
       },
     ],
-  } satisfies Daftar<IdKebiasaan>,
+  } as Daftar<IdKebiasaan>,
 };
 
 // ---------- Topik 3 ----------
@@ -141,11 +141,11 @@ export const sekitarRumah = {
     judul: "Halaman dan Sekitar Rumah",
     rute: "/sekitar-rumah",
     jumlahBintang: 1,
-  } satisfies InfoTopik,
+  } as InfoTopik,
   melihatLuar: {
     judul: "Melihat Luar Rumah Yuk!",
     teks: "Di luar rumah kita ada halaman dan jalanan yang ramai. Mari kita lihat ada apa saja di sana.",
-  } satisfies Paragraf,
+  } as Paragraf,
   sekitar: {
     judul: "Benda dan Makhluk Hidup di Sekitar Kita:",
     items: [
@@ -170,7 +170,7 @@ export const sekitarRumah = {
         definisi: "Orang-orang baik yang tinggal di sebelah rumah kita.",
       },
     ],
-  } satisfies Daftar<IdSekitar>,
+  } as Daftar<IdSekitar>,
   namaCari: [
     { id: "bunga", nama: "bunga", kategori: "tanaman" },
     { id: "semut", nama: "Semut", kategori: "hewan" },
@@ -180,7 +180,7 @@ export const sekitarRumah = {
     { id: "motor", nama: "motor", kategori: "kendaraan" },
     { id: "mobil", nama: "mobil", kategori: "kendaraan" },
     { id: "tetangga", nama: "Tetangga", kategori: "tetangga" },
-  ] satisfies ItemCari[],
+  ] as ItemCari[],
 };
 
 export const daftarTopik: InfoTopik[] = [rumahku.info, rumahBersih.info, sekitarRumah.info];
