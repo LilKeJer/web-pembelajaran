@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --langit: #bfe9ff;
+  --krem: #fff8e7;
+  --teks: #2b2350;
+  --kuning: #ffd23f;
+  --oranye: #ff8c42;
+  --hijau: #3bb273;
+  --biru: #3a86ff;
+  --merah-muda: #ff6b9a;
+  --ungu: #8e6cef;
+}
+
+@theme inline {
+  --color-langit: var(--langit);
+  --color-krem: var(--krem);
+  --color-teks: var(--teks);
+  --color-kuning: var(--kuning);
+  --color-oranye: var(--oranye);
+  --color-hijau: var(--hijau);
+  --color-biru: var(--biru);
+  --color-merah-muda: var(--merah-muda);
+  --color-ungu: var(--ungu);
+  --font-sans: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--langit);
+  color: var(--teks);
+  font-family: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Tombol: efek tekan */
+.tekan {
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 6px 0 rgba(43, 35, 80, 0.25);
+}
+.tekan:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(43, 35, 80, 0.25);
+}
+
+@keyframes goyang {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-6deg); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-4deg); }
+  80% { transform: rotate(3deg); }
+}
+.goyang {
+  animation: goyang 500ms ease-in-out;
+}
+
+@keyframes muncul {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.muncul {
+  animation: muncul 420ms ease-out both;
+}
+
+@keyframes melayang {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.melayang {
+  animation: melayang 2.4s ease-in-out infinite;
+}
+
+@keyframes kilau {
+  0% { box-shadow: 0 0 0 0 rgba(255, 210, 63, 0.9); }
+  100% { box-shadow: 0 0 0 22px rgba(255, 210, 63, 0); }
+}
+.kilau {
+  animation: kilau 700ms ease-out;
+}
+
+@keyframes denyut {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.denyut {
+  animation: denyut 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
