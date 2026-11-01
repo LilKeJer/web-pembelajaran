@@ -22,7 +22,7 @@ export function KameraHalus({ posisi, lihat, instan = false }: { posisi: Vec3; l
 
   useFrame((_, delta) => {
     const rasio = ukuran.width / Math.max(1, ukuran.height);
-    const faktor = rasio < RASIO_ACUAN ? Math.min(2.4, Math.pow(RASIO_ACUAN / rasio, 0.9)) : 1;
+    const faktor = rasio < RASIO_ACUAN ? Math.min(2.2, Math.pow(RASIO_ACUAN / rasio, 0.8)) : 1;
 
     tujuanLihat.current.set(...lihat);
     tujuan.current.set(...posisi).sub(tujuanLihat.current).multiplyScalar(faktor).add(tujuanLihat.current);
