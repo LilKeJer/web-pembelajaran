@@ -11,6 +11,24 @@ export const teksUi = {
   // Pembuka
   ayoMulai: "Ayo Mulai!",
 
+  // Identitas penyusun (ditampilkan di layar pembuka, tidak dibacakan)
+  identitas: [
+    { label: "Nama", isi: "Ita" },
+    { label: "NIM", isi: "858193709" },
+    { label: "Mata Kuliah", isi: "Produksi Bahan Pembelajaran Berbasis Online" },
+  ],
+
+  // Tujuan pembelajaran dari penyusun (ditampilkan di layar pembuka, tidak dibacakan)
+  judulTujuan: "Tujuan Pembelajaran",
+  pengantarTujuan: "Setelah mengikuti kegiatan pembelajaran, anak diharapkan mampu:",
+  tujuan: [
+    "Mengenal lingkungan di sekitar tempat tinggal.",
+    "Menyebutkan benda-benda yang ada di lingkungan.",
+    "Mengenal bagian-bagian rumah.",
+    "Mengetahui cara menjaga kebersihan lingkungan.",
+    "Membiasakan diri menyayangi dan merawat lingkungan.",
+  ],
+
   // Navigasi
   lanjut: "Lanjut",
   ulangi: "Ulangi",

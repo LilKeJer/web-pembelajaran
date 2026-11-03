@@ -44,15 +44,35 @@ export default function Beranda() {
 
   if (!mulai) {
     return (
-      <main className="flex h-dvh w-full flex-col items-center justify-center gap-8 overflow-hidden bg-langit p-4">
-        <div aria-hidden className="melayang flex gap-3 text-7xl sm:text-8xl">
+      <main className="flex h-dvh w-full flex-col items-center justify-center gap-5 overflow-hidden bg-langit p-4 landscape:gap-3">
+        <section className="flex min-h-0 w-full max-w-xl shrink flex-col gap-3 overflow-y-auto rounded-3xl bg-white/90 px-5 py-4 text-teks shadow-sm">
+          <dl className="grid grid-cols-[auto_auto_1fr] gap-x-2 text-base sm:text-lg">
+            {teksUi.identitas.map((b) => (
+              <div key={b.label} className="contents">
+                <dt className="font-bold">{b.label}</dt>
+                <span aria-hidden>:</span>
+                <dd>{b.isi}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="border-t-2 border-langit pt-3 text-base sm:text-lg">
+            <h2 className="text-xl font-bold text-ungu sm:text-2xl">{teksUi.judulTujuan}</h2>
+            <p className="mt-1">{teksUi.pengantarTujuan}</p>
+            <ol className="mt-1 list-decimal pl-6">
+              {teksUi.tujuan.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ol>
+          </div>
+        </section>
+        <div aria-hidden className="melayang flex shrink-0 gap-3 text-6xl sm:text-7xl landscape:hidden">
           {daftarTopik.map((t) => (
             <span key={t.id}>{t.ikon}</span>
           ))}
         </div>
         <TombolBesar
           warna="oranye"
-          className="denyut px-14 py-6 text-4xl sm:text-5xl"
+          className="denyut shrink-0 px-14 py-6 text-4xl sm:text-5xl"
           onClick={() => {
             bukaIzinSuara();
             sfx.buka();
